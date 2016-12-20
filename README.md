@@ -2,7 +2,7 @@
 
 ## Background
 
-Perihelion is a JavaScript game about recharging a spaceship by flying it close to a star but not too close to damage the ship. It will rely heavily on Newtonian laws of gravitational attraction and give players just one chance to slingshot a ship around a star. The shot will be considered successful if the ship recharges an acceptable amount while preventing its health from running dangerously low. After each successful shot, the game will render a new randomly generated board.
+Perihelion is a JavaScript game about recharging a spaceship by flying it close to a star but not too close to damage the ship. It will rely heavily on Newtonian laws of gravitational attraction and give players just one chance to slingshot a ship around a star.
 
 ## Functionality & MVP
 
@@ -36,6 +36,12 @@ Perihelion will be developed using the following technologies:
 `celestial.js`: this script will house the constructor and values for each of the celestial bodies, both planets and stars, which will inherit from planets. All celestials will have mass and a location in space, but stars will also have an energy level. These objects will be based on the PhysicsJS' Physics class.
 
 `ship.js`: this script will include the constructor and values of the `Ship` class, which will include the velocity vector value, health, and energy values.
+
+## Gameplay Logic
+
+The `Ship` class will contain `health` and `energy` properties that are displayed on the board. Additionally, it will have a `mass` property to properly calculate the gravitational forces between it and the `Star` on each level. A level is considered won if the ship's `energy` is back to 100 and its `health` does not hit 0 during its flyby of the `Star`.
+
+If the `Ship` escapes the `Star`'s gravity by recharging and exiting a fixed orbit, the level will be considered won. However, any collision with the `Star` or a `Ship`'s health of 0 will be considered a loss and the level will be reset. A win will result in a harder level with randomly generated values in the initial `health` and `energy` of the `Ship` and `mass` of the `Star`.
 
 ## Implementation Timeline
 
