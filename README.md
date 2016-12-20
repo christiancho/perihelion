@@ -2,7 +2,7 @@
 
 ## Background
 
-Perihelion is a JavaScript game about recharging a spaceship by flying it close to a star but not too close to damage the ship. It will rely heavily on Newtonian laws of gravitational attraction and give players just one chance to slingshot a ship around a star.
+Perihelion is a JavaScript game about recharging a spaceship by flying it close to a star but not too close to damage the ship. It will rely heavily on Newtonian laws of gravitational attraction and give players just one chance to slingshot a ship around a star. The shot will be considered successful if the ship recharges an acceptable amount while preventing its health from running dangerously low. After each successful shot, the game will render a new randomly generated board.
 
 ## Functionality & MVP
 
@@ -43,7 +43,7 @@ Perihelion will be developed using the following technologies:
 - Get a green bundle with `webpack`.
 - Learn enough `Easel.js` and `Physics.js` to render a simple Newtonian orbit with a star and a ship.
 
-**Day 2**: Build out the `Celestial` object and the childclass `Star` with the respective values. Get the rendering of all kinds of `Star`s and with different colors and positions. Goals for the day:
+**Day 2**: Build out the `Celestial` object and the child class `Star` with the respective values. Get the rendering of all kinds of `Star`s and with different colors and positions. Goals for the day:
 - Complete the `celestial.js` module (constructor and update functions)
 - Render the planets to the `Canvas` using `Easel.js`
 
@@ -55,6 +55,6 @@ Perihelion will be developed using the following technologies:
 ## Bonus Features
 
 A physics game like Perihelion naturally has the potential to handle complex physics through the presence of multiple objects. I envision the game to:
-1. Handle several other `Celestial` child classes like `Asteroid`
+1. Handle several other `Celestial` child classes like `Asteroid`s
 2. Give players options to upgrade their `Ship`
-3. Render elements in 3D using a library like `Babylon.js`
+3. Render elements in 3D using a library like `Babylon.js` and potentially create a first-person view of the ship when it launches.
