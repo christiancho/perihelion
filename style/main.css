@@ -20,6 +20,7 @@ main {
 header {
   display: flex;
   justify-content: center;
+  letter-spacing: 20px;
   padding: 20px;
   position: absolute;
     top: 0;
@@ -35,13 +36,29 @@ header > h1 {
 }
 
 #game-canvas {
-  border: 2px dotted white;
+  border: 1px dotted white;
 }
 
 footer {
+  display: flex;
+  justify-content: center;
   padding: 20px;
   position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+footer > a {
+  color: #DDD;
+  font-family: 'Codystar', cursive;
+  font-size: 24px;
+  margin: 0px 20px;
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+footer > a:hover {
+  color: #FFF;
+  letter-spacing: 10px;
 }
