@@ -20,7 +20,7 @@ In addition, this project will include:
 
 The game will be rendered on a single screen with the game board with links to the game's GitHub repo as well as to my personal page and LinkedIn profile. The screen will also include a ship's health and energy levels so that users can see them change with their plays.
 
-![alt text](https://raw.githubusercontent.com/christiancho/perihelion/master/wireframes/main.jpg "Main Wireframe")
+![alt text](https://raw.githubusercontent.com/christiancho/perihelion/master/docs/wireframes/main.jpg "Main Wireframe")
 
 ## Architecture and Technologies
 
