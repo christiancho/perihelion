@@ -8,7 +8,8 @@ html, body, main {
 }
 
 body {
-  background-image: url('../assets/background.png');
+  background-image: url('../assets/images/background.png');
+  background-position: center;
 }
 
 main {
@@ -43,10 +44,6 @@ header > h2 {
   font-weight: 100;
   letter-spacing: 5px;
   margin-top: 20px;
-}
-
-#game-canvas {
-  border: 1px dotted white;
 }
 
 footer {
