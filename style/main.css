@@ -8,14 +8,14 @@ html, body, main {
 }
 
 body {
+  background-blend-mode: multiply;
+  background-color: #333;
   background-image: url('../assets/images/background.png');
   background-position: center;
 }
 
 main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
 header {
@@ -39,11 +39,40 @@ header > h1 {
 }
 
 header > h2 {
-  color: #FFF;
-  font-family: 'Lato', sans-serif;
-  font-weight: 100;
+  color: #DDD;
+  font-family: 'VT323', monospace;
+  font-size: 24px;
   letter-spacing: 5px;
   margin-top: 20px;
+}
+
+.game-meters {
+  padding: 20px;
+  position: absolute;
+    left: 20;
+    top: 20;
+}
+
+.energy-meter-bar {
+  background-color: #FFF;
+  border-radius: 5px;
+  display: block;
+  overflow: hidden;
+  width: 200px;
+  height: 10px;
+}
+
+.energy-level {
+  background-color: #95d67e;
+  height: 10px;
+}
+
+.meter-label {
+  color: #fff;
+  display: block;
+  font-family: 'VT323';
+  margin-top: 5px;
+  text-align: right;
 }
 
 footer {
