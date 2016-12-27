@@ -62,7 +62,7 @@ header > h2 {
   height: 10px;
 }
 
-.energy-level {
+#energy-level {
   background-color: #95d67e;
   height: 10px;
 }
@@ -73,6 +73,33 @@ header > h2 {
   font-family: 'VT323';
   margin-top: 5px;
   text-align: right;
+}
+
+#reset-button {
+  background-color: #95d67e;
+  border: none;
+  border-radius: 10px;
+  color: #222;
+  cursor: pointer;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+  font-family: 'VT323', monospace;
+  outline: none;
+  position: fixed;
+    top: 0;
+    right: 0;
+  margin: 20px;
+  width: 200px;
+  height: 20px;
+}
+
+#reset-button:hover {
+  background-color: #A5E68E;
+}
+
+#reset-button:active {
+  background-color: #95C66e;
 }
 
 footer {
@@ -97,4 +124,33 @@ footer > a {
 footer > a:hover {
   color: #FFF;
   letter-spacing: 10px;
+}
+
+#modal-back {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.intro-modal {
+  color: #fff;
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+  width: 80%;
+}
+
+.intro-modal > h2 {
+  font-size: 36px;
+  margin: 20px 0;
+}
+
+.intro-modal > ol {
+  list-style-type: decimal;
 }
