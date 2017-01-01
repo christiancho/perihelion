@@ -4,6 +4,8 @@ Perihelion is a space-based JavaScript game about finding your way home. It uses
 
 [Live version](http://christiancho.tech/perihelion)
 
+![alt text](https://raw.githubusercontent.com/christiancho/perihelion/gh-pages/docs/screenshots/perihelion.png "Screenshot")
+
 ## Play Instructions
 
 To begin the game, click and drag the ship to set the initial trajectory. The gravity of the star in the middle will always be active and set the ship in orbit if the ship has enough initial velocity. The ship will charge its energy as it passes by the star. Once the energy is full, all of it will be used to open a portal in a random location. Once the ship touches the portal, the game is over. To maneuver the ship, press space to activate the thrusters toward the mouse position.
