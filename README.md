@@ -1,66 +1,80 @@
 # Perihelion
 
-## Background
+Perihelion is a space-based JavaScript game about finding your way home. It uses the Easel.js library and features a minimalist game aesthetic.
 
-Perihelion is a JavaScript game about recharging a spaceship by flying it close to a star but not too close to damage the ship. It will rely heavily on Newtonian laws of gravitational attraction and give players just one chance to slingshot a ship around a star.
+[Live version](http://christiancho.tech/perihelion)
 
-## Functionality & MVP
+## Play Instructions
 
-In Perihelion, players will be able to:
+To begin the game, click and drag the ship to set the initial trajectory. The gravity of the star in the middle will always be active and set the ship in orbit if the ship has enough initial velocity. The ship will charge its energy as it passes by the star. Once the energy is full, all of it will be used to open a portal in a random location. Once the ship touches the portal, the game is over. To maneuver the ship, press space to activate the thrusters toward the mouse position.
 
-- [ ] Choose a ship's vector amount with the mouse
-- [ ] Choose from a variety of levels for varied gameplay
+## Technologies Used
 
-In addition, this project will include:
+#### [Easel.js](http://www.createjs.com/easeljs)
 
-- [ ] Tutorial levels to teach players how to play
-- [ ] A production README
+A component of the Create.js library, Easel.js facilitates the rendering of elements onto the HTML5 canvas element. It allows for the rendering of basic shapes and includes a way to utilize sprite sheets. Both the `Ship` and the `Portal` class use sprite sheets:
 
-## Wireframes
+```javascript
+const shipSprite = {
+  images: ["./assets/images/spaceship.png"],
+  frames: { width: 50, height: 50 },
+  animations: {
+    none: [7],
+    standard: [13],
+    thrust: {
+      frames: [0, 13]
+    },
+    explode: [30, 36, 'none']
+  }
+};
 
-The game will be rendered on a single screen with the game board with links to the game's GitHub repo as well as to my personal page and LinkedIn profile. The screen will also include a ship's health and energy levels so that users can see them change with their plays.
+const shipSpriteSheet = new createjs.SpriteSheet(shipSprite);
+```
 
-![alt text](https://raw.githubusercontent.com/christiancho/perihelion/master/docs/wireframes/main.jpg "Main Wireframe")
+## Technical Implementation
 
-## Architecture and Technologies
+### Gravity
 
-Perihelion will be developed using the following technologies:
+Newton's law of universal gravitation:
+![alt text](https://wikimedia.org/api/rest_v1/media/math/render/svg/8c6ee5510ba3c7d6664775c0e76b53e72468303a "Newton's law of universal gravitation")
 
-- Vanilla JavaScript and jQuery for basic structure and rendering
-- PhysicsJS for Newtonian physics handling and collision detection
-- EaselJS for rendering to HTML5 canvas
-- Webpack to bundle all files and serve up the assets
+This formula was used to calculate the force of the star's gravity on the ship. While our universe's actual gravitational constant (G) is `6.67408(31) x 10¹¹m³kg⁻¹s⁻²`, the game's G is stored as a simple float value in the `GameView` class as `this.gravitationalConstant`. This allows for quick adjustments to the game's overall physical properties.
 
-`board.js`: this script will be responsible for the rendering of all of the elements and managing the overall physics of the objects.
+```javascript
+distanceBetween(obj1, obj2){
+  const deltaX = obj1.position.X - obj2.position.X;
+  const deltaY = obj1.position.Y - obj2.position.Y;
+  return Math.sqrt( Math.pow(deltaX, 2) + Math.pow(deltaY, 2) );
+}
 
-`celestial.js`: this script will house the constructor and values for each of the celestial bodies, both planets and stars, which will inherit from planets. All celestials will have mass and a location in space, but stars will also have an energy level. These objects will be based on the PhysicsJS' Physics class.
+gravitationalNormal(){
+  return (
+    ( this.gravitationalConstant * this.ship.mass * this.star.mass ) /
+    Math.pow( this.distanceBetween(this.ship, this.star), 2)
+  );
+}
+```
 
-`ship.js`: this script will include the constructor and values of the `Ship` class, which will include the velocity vector value, health, and energy values.
+### Audio
 
-## Gameplay Logic
+#### Style & Implementation
 
-The `Ship` class will contain `health` and `energy` properties that are displayed on the board. Additionally, it will have a `mass` property to properly calculate the gravitational forces between it and the `Star` on each level. A level is considered won if the ship's `energy` is back to 100 and its `health` does not hit 0 during its flyby of the `Star`.
+The overall mood of the game is designed to emphasize the desolation of space, and appropriate to the theme, I used the piano version of the main theme from a popular movie. All audio is played using JavaScript's native `Audio` class. An example from the `Portal` class:
 
-If the `Ship` escapes the `Star`'s gravity by recharging and exiting a fixed orbit, the level will be considered won. However, any collision with the `Star` or a `Ship`'s health of 0 will be considered a loss and the level will be reset. A win will result in a harder level with randomly generated values in the initial `health` and `energy` of the `Ship` and `mass` of the `Star`.
+```javascript
+setupAudio(){
+  this.teleportSound = new Audio("./assets/sounds/teleport.mp3");
+}
 
-## Implementation Timeline
+closePortal(){
+  this.sprite.gotoAndPlay("disappear");
+  this.teleportSound.currentTime = 3.75;
+  this.teleportSound.play();
+}
+```
 
-**Day 1**: Set up all necessary Node modules, including getting webpack up and running and EaselJS and PhysicsJS installed. Create `webpack.config.js` as well as `package.json`. Write a basic entry file and the skeletons for all three files above. Learn the basics of `Easel.js` and `Physics.js`. Goals for the day:
-- Get a green bundle with `webpack`.
-- Learn enough `Easel.js` and `Physics.js` to render a simple Newtonian orbit with a star and a ship.
+### To-Do
 
-**Day 2**: Build out the `Celestial` object and the child class `Star` with the respective values. Get the rendering of all kinds of `Star`s and with different colors and positions. Goals for the day:
-- Complete the `celestial.js` module (constructor and update functions)
-- Render the planets to the `Canvas` using `Easel.js`
-
-**Day 3**: Focus on the `Ship` class. Ensure that the `Ship` class responds to click and drag input to change velocity vector. Once that is complete, have the ship's health and energy levels change in response to proximity to the `Star` class objects. Goals for the day:
-- Render the `Ship` class
-- Have the `Ship` class respond to click and drag mouse input
-- Handle game over logic
-
-## Bonus Features
-
-A physics game like Perihelion naturally has the potential to handle complex physics through the presence of multiple objects. I envision the game to:
-1. Handle several other `Celestial` child classes like `Asteroid`s
-2. Give players options to upgrade their `Ship`
-3. Render elements in 3D using a library like `Babylon.js` and potentially create a first-person view of the ship when it launches.
+- [ ] Refine the physics to create highly elliptical and stable orbits.
+- [ ] Create multiple levels.
+- [ ] Add more than one object to include planets and asteroids.
