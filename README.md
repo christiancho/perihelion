@@ -57,7 +57,39 @@ gravitationalNormal(){
 }
 ```
 
-### Audio
+### Thrust
+
+Some trigonometry was needed to calculate the x and y forces of the ship's thrust. As the mouse moves around the page, the `ship`'s `rotation` property is updated:
+
+```javascript
+updateRotation(mousePosition){
+  if ( !this.launched || this.exploded ) return;
+  const deltaX = mousePosition.X - this.position.X;
+  const deltaY = mousePosition.Y - this.position.Y;
+  let angle = Math.atan( deltaY / deltaX ) * ( 180 / Math.PI);
+  if (deltaX < 0) angle += 180;
+  this.rotation = angle;
+  this.sprite.rotation = this.rotation;
+}
+```
+
+Once the angle has been updated, the thrust of the ship can be calculated:
+
+```javascript
+addThrustForce(){
+  const angle = this.rotation * ( Math.PI / 180 );
+  const deltaX = Math.cos(angle) * this.thrustForce;
+  const deltaY = Math.sin(angle) * this.thrustForce;
+  this.velocity.deltaX += deltaX;
+  this.velocity.deltaY += deltaY;
+  if ( this.energy > 0 ) this.energy -= 0.1;
+  if ( this.energy <= 0 ) {
+    this.thrusterSound.pause();
+    this.thrustersActive = false;
+    this.sprite.gotoAndPlay("standard");
+  }
+}
+```
 
 #### Style & Implementation
 
