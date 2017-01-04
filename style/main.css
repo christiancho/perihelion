@@ -134,7 +134,7 @@ footer > a:hover {
   letter-spacing: 10px;
 }
 
-#modal-back {
+#modal-back, #game-over {
   background-color: #000;
   display: flex;
   justify-content: center;
@@ -147,14 +147,35 @@ footer > a:hover {
     left: 0;
 }
 
-.instructions-modal {
+#game-over {
+  visibility: hidden;
+}
+
+.modal-container {
   color: #fff;
   font-family: 'VT323', monospace;
   font-size: 24px;
   width: 60%;
 }
 
-.instructions-modal > h2 {
+.modal-container > h2 {
   font-size: 36px;
   margin: 20px 0;
+}
+
+.headphones {
+  font-size: 16px;
+  position: relative;
+}
+
+.headphones:after {
+  content: "";
+  background-image: url('../assets/images/headphones.png');
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+    top: 0;
+    right: -20px;
+  width: 16px;
+  height: 16px;
 }
