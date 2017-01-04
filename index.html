@@ -7,11 +7,6 @@
     <link rel="stylesheet" type="text/css" href="style/main.css">
     <script type="text/javascript" src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <script type="text/javascript" src="lib/bundle.js"></script>
-    <script type="text/javascript">
-      function clearModal(){
-        document.getElementById('modal-back').style.visibility = "hidden";
-      }
-    </script>
   </head>
   <body>
     <header>
@@ -31,18 +26,12 @@
     <footer>
       <a href="https://github.com/christiancho/perihelion" target="_blank">Source Code</a>
     </footer>
-    <section id="modal-back" onclick="clearModal()">
-      <div class="intro-modal">
-        <h2>Welcome, astronaut.</h2>
-        <p>You are currently adrift in a faraway star system. We need you to gather enough enery from the star to open a portal back to Earth. Good luck.</p>
-        <h2>Instructions</h2>
-        <ol>
-          <li>Set your initial velocity by clicking and dragging the ship. The length of the line will set your initial speed.</li>
-          <li>The gravitational pull of the star will set you into orbit, or cause you to crash violently. Be careful.</li>
-          <li>The closer your ship's "perihelion", or the closet point to the star in your orbit, the more energy you will gather.</li>
-          <li>To change your orbit, you can use what energy you have by pressing space to create thrust. Your ship will move towards the mouse but the star will still exert its gravity.</li>
-          <li>Once your ship has filled its energy level, a portal will appear.</li>
-        </ol>
+    <section id="modal-back">
+      <div class="instructions-modal">
+        <img id="instructions-image"></img>
+        <h2 id="instructions-heading"></h2>
+        <span id="instructions-details"></span>
+        <button id="instructions-next">Next</button>
       </div>
     </section>
   </body>

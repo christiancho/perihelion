@@ -75,31 +75,39 @@ header > h2 {
   text-align: right;
 }
 
-#reset-button {
+button {
   background-color: #95d67e;
   border: none;
   border-radius: 10px;
   color: #222;
   cursor: pointer;
-  display: flex;
-    justify-content: center;
-    align-items: center;
   font-family: 'VT323', monospace;
   outline: none;
-  position: fixed;
-    top: 0;
-    right: 0;
-  margin: 20px;
   width: 200px;
   height: 20px;
 }
 
-#reset-button:hover {
+button:hover {
   background-color: #A5E68E;
 }
 
-#reset-button:active {
+button:active {
   background-color: #95C66e;
+}
+
+#reset-button {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+  margin: 20px;
+  position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#instructions-next {
+  display: block;
+  margin: 20px 0;
 }
 
 footer {
@@ -139,18 +147,14 @@ footer > a:hover {
     left: 0;
 }
 
-.intro-modal {
+.instructions-modal {
   color: #fff;
   font-family: 'VT323', monospace;
   font-size: 24px;
-  width: 80%;
+  width: 60%;
 }
 
-.intro-modal > h2 {
+.instructions-modal > h2 {
   font-size: 36px;
   margin: 20px 0;
-}
-
-.intro-modal > ol {
-  list-style-type: decimal;
 }
