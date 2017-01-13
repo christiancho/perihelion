@@ -135,7 +135,6 @@ footer > a:hover {
 }
 
 #modal-back, #game-over {
-  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,14 +147,18 @@ footer > a:hover {
 }
 
 #game-over {
+  background-color: #000;
   visibility: hidden;
 }
 
 .modal-container {
+  background-color: #000;
   color: #fff;
   font-family: 'VT323', monospace;
   font-size: 24px;
-  width: 60%;
+  padding: 40px;
+  width: 50%;
+  max-width: 750px;
 }
 
 .modal-container > h2 {
@@ -184,4 +187,10 @@ footer > a:hover {
   display: block;
   cursor: pointer;
   font-size: 14px;
+}
+
+#pointer-arrow {
+  position: fixed;
+  transform: rotateX(180deg);
+  width: 50px;
 }
